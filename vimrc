@@ -51,7 +51,7 @@ Plug 'tpope/vim-commentary'
 
 Plug 'maksimr/vim-jsbeautify'
 
-Plug 'psf/black'
+Plug 'psf/black', { 'branch': 'stable' }
 
 call plug#end()
 
