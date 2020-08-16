@@ -1,11 +1,17 @@
 # George Chung's vimrc
 
-run ./install.sh to copy to home directory 
-then run vim 
-then type :PlugInstall 
 
+OS requirement:
+Ubuntu 20.04/18.04
 
-To install black, pip3 install black 
+Pre-requisites:
+vim
+python3
+pip3
+npm
+node
+go
 
-cd .vim/plugged/YouCompleteMe 
-python3 install.py --all 
+run ubuntu-requirements.sh to fulfill the pre-requisites
+
+run ./install.sh to install
