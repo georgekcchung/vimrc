@@ -11,3 +11,4 @@ apt install python3-pip -y
 apt install ripgrep -y
 apt install agrep -y
 apt install ctags -y
+apt install curl -y

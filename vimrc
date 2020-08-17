@@ -22,14 +22,11 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " Plugin options
-Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '/home/georgechung/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-
-" Unmanaged plugin (manually installed and updated)
-" Plug '~/my-prototype-plugin'
 
 " super search by control-P
 Plug 'ctrlpvim/ctrlp.vim'
@@ -48,7 +45,11 @@ Plug 'tpope/vim-commentary'
 
 Plug 'maksimr/vim-jsbeautify'
 
-Plug 'psf/black', { 'branch': 'stable' }
+Plug 'psf/black'
+
+Plug 'Chiel92/vim-autoformat'
+
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 
@@ -88,6 +89,7 @@ set nocursorcolumn              " Do not highlight column (speeds up highlightin
 set nocursorline                " Do not highlight cursor (speeds up highlighting)
 set lazyredraw                  " Wait to redraw
 set cmdheight=2
+set paste
 
 " Enable to copy to clipboard for operations like yank, delete, change and put
 " http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
@@ -162,6 +164,8 @@ let g:go_bin_path = $HOME."/go/bin"
 " Open :GoDeclsDir with ctrl-g
 nmap <C-g> :GoDeclsDir<cr>
 imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
+nmap <C-=> :GoImplements<cr>
+nmap <C-\> :GoDescribe<cr>
 
 
 augroup go
@@ -227,4 +231,30 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 :set autoindent
 :set smartindent
 
-map <c-f> :call JsBeautify()<cr>
+"map <c-f> :call JsBeautify()<cr>
+
+" auto code format, for Python
+:nnoremap <C-f> :Autoformat<CR>
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+" au BufWrite * :Autoformat
+
+" tagbar config
+let g:tagbar_width = 30
+nmap <F9> :TagbarToggle<CR>
+let g:tagbar_autopreview = 1
+let g:tagbar_sort = 0
+let g:airline#extensions#tagbar#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+
+:set spell spelllang=en_us
+
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+" [Commands] --expect expression for directly executing the command
+let g:fzf_commands_expect = 'alt-enter,ctrl-x'
