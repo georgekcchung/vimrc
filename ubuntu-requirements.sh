@@ -12,3 +12,4 @@ apt install ripgrep -y
 apt install agrep -y
 apt install ctags -y
 apt install curl -y
+apt install python3-venv
