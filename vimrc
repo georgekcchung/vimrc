@@ -258,3 +258,20 @@ let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %
 let g:fzf_tags_command = 'ctags -R'
 " [Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+
+
+" comment keys
+"
+" gc{motion}              Comment or uncomment lines that {motion} moves over.
+"                                                 *gcc*
+" gcc                     Comment or uncomment [count] lines.
+"                                                 *v_gc*
+" {Visual}gc              Comment or uncomment the highlighted lines.
+"                                                 *o_gc*
+" gc                      Text object for a comment (operator pending mode
+"                         only.)
+"                                                 *gcgc* *gcu*
+" gcgc                    Uncomment the current and adjacent commented lines.
+" gcu
+"                                                 *:Commentary*
+" :[range]Commentary      Comment or uncomment [range] lines
