@@ -5,25 +5,24 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" A simple, easy-to-use Vim alignment plugin.
 Plug 'junegunn/vim-easy-align'
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go', { 'tag': '*' }
 
+" vim snippets
 " Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ualtisnips' | Plug 'honza/vim-snippets'
 
-" On-demand loading
+"  a file system explorer for the Vim editor
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+"Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Plugin options
 Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 
+" a general-purpose command-line fuzzy finder.
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -34,21 +33,22 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Git integration
 Plug 'tpope/vim-fugitive'
 
-" Python indentation
-Plug 'vim-scripts/indentpython.vim'
-
+" a code-completion engine for Vim
 Plug 'Valloric/YouCompleteMe'
 
+" Lean & mean status/tabline
 Plug 'vim-airline/vim-airline'
 
+" code commenter
 Plug 'tpope/vim-commentary'
 
+" quickly format javascript, html and css files
 Plug 'maksimr/vim-jsbeautify'
 
-Plug 'psf/black'
+" Python code formatter
+Plug 'psf/black', { 'tag': '19.10b0' }
 
-Plug 'Chiel92/vim-autoformat'
-
+" provides an easy way to browse the tags of the current file and get an overview of its structure. F9 to activate tagbar
 Plug 'majutsushi/tagbar'
 
 call plug#end()
@@ -226,10 +226,11 @@ set background=dark
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
-:set expandtab
-:set shiftwidth=4
-:set autoindent
-:set smartindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+":set smartindent
 
 "map <c-f> :call JsBeautify()<cr>
 
@@ -248,7 +249,7 @@ let g:tagbar_sort = 0
 let g:airline#extensions#tagbar#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 
-:set spell spelllang=en_us
+":set spell spelllang=en_us
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -260,7 +261,7 @@ let g:fzf_tags_command = 'ctags -R'
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 
-" comment keys
+" tpope/vim-commentary comment keys
 "
 " gc{motion}              Comment or uncomment lines that {motion} moves over.
 "                                                 *gcc*
@@ -275,3 +276,21 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 " gcu
 "                                                 *:Commentary*
 " :[range]Commentary      Comment or uncomment [range] lines
+
+" Black command
+" :Black
+" to format Python code
+
+" vim-jsbeautify
+" map <c-f> :call JsBeautify()<cr>
+" autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+" autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+" autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+
+" vim-easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+"xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+"nmap ga <Plug>(EasyAlign)
