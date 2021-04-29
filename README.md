@@ -3,6 +3,7 @@
 
 OS requirement:
 Ubuntu 20.04/18.04
+2G RAM
 
 Pre-requisites:
 vim
@@ -11,7 +12,6 @@ pip3
 npm
 node
 go
-
-run ubuntu-requirements.sh to fulfill the pre-requisites
+java-11
 
 run ./install.sh to install
