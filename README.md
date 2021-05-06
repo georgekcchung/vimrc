@@ -16,3 +16,8 @@ java11
 
 ## install
 run ./install.sh to install
+
+
+# known error
+https://remarkablemark.org/blog/2021/04/25/youcompleteme-install-error-mojave/
+
